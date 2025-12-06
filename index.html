@@ -182,6 +182,25 @@
             transform: scale(1.02);
         }
 
+        .help-btn {
+            display: inline-block;
+            background: #c41e3a;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+            border: 2px solid #ffd700;
+        }
+
+        .help-btn:hover {
+            background: #ffd700;
+            color: #c41e3a;
+            transform: translateY(-3px);
+        }
+
         .success-message {
             display: none;
             text-align: center;
@@ -325,6 +344,11 @@
                 <path d="M30 15 Q50 5 70 15" fill="#ffd700"/>
             </svg>
             <p class="intro">Scrivi la tua letterina e ricevi una risposta MAGICA e personalizzata direttamente da Babbo Natale! 🎅✨</p>
+            
+            <!-- Pulsante Assistenza -->
+            <a href="https://maialinofluttuante.github.io/assistenza-lettere-babbo/" target="_blank" class="help-btn">
+                <i class="fas fa-question-circle"></i> Hai bisogno di aiuto? Clicca qui per l'Assistenza
+            </a>
         </header>
 
         <!-- Countdown alla Vigilia -->
@@ -379,6 +403,11 @@
             <h2><i class="fas fa-code"></i> Creato con ❤️ da</h2>
             <div class="creator-badge">Angelini Matteo</div>
             <p>Porto un po' di magia natalizia a tutti i bambini attraverso la tecnologia!</p>
+            <p style="margin-top: 15px;">
+                <a href="https://maialinofluttuante.github.io/assistenza-lettere-babbo/" target="_blank" style="color: #ffd700; text-decoration: underline;">
+                    <i class="fas fa-question-circle"></i> Sito di Assistenza
+                </a>
+            </p>
         </div>
 
         <!-- Form Lettera -->
@@ -392,7 +421,7 @@
 
             <div class="form-group">
                 <label for="age"><i class="fas fa-birthday-cake"></i> La tua età:</label>
-                <input type="number" id="age" name="age" min="1" max="12" required placeholder="Quanti anni hai?">
+                <input type="number" id="age" name="age" min="1" max="120" required placeholder="Quanti anni hai?">
             </div>
 
             <div class="form-group">
@@ -455,6 +484,12 @@
     <footer>
         <p>© 2023 Ufficio Postale Magico di Babbo Natale - Creato da Angelini Matteo</p>
         <p>La magia del Natale è reale quando la condividiamo insieme! ✨</p>
+        <p style="margin-top: 10px;">
+            <a href="https://maialinofluttuante.github.io/assistenza-lettere-babbo/" target="_blank" 
+               style="color: #ffd700; text-decoration: none; font-weight: bold;">
+               <i class="fas fa-life-ring"></i> Assistenza Tecnica
+            </a>
+        </p>
     </footer>
 
     <script>
@@ -554,6 +589,13 @@
             const gift1 = document.getElementById('gift1').value;
             const gift2 = document.getElementById('gift2').value;
             const letter = document.getElementById('letter').value;
+            
+            // Validazione dell'età
+            const ageNum = parseInt(age);
+            if (isNaN(ageNum) || ageNum < 1 || ageNum > 120) {
+                alert("Per favore, inserisci un'età valida (tra 1 e 120 anni)");
+                return;
+            }
             
             // Genera risposta AI
             const aiResponse = generateAIResponse(name, age, city, gift1, gift2, letter);
